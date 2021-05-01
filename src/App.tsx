@@ -1,7 +1,12 @@
-import React from "react";
-
+import Nav from './components/NavigationBar/Nav'
+import Card from './components/Posts/Card'
 const App = () => {
-    return <div className="hi">hi</div>;
-};
+  return (
+    <div>
+      <Nav />
+      <Card />
+    </div>
+  )
+}
 
-export default App;
+export default App
