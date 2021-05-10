@@ -1,5 +1,7 @@
 import React from 'react'
+import './style.scss'
 import {
+  Badge,
   IconButton,
   Toolbar,
   Typography,
@@ -18,6 +20,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import FaceIcon from '@material-ui/icons/Face'
 import GroupIcon from '@material-ui/icons/Group'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import PostAddIcon from '@material-ui/icons/PostAdd'
 import {
   makeStyles,
   useTheme,
@@ -50,10 +53,11 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'none',
       },
     },
-    // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
+      backgroundColor: '#3949ab',
+      color: '#ffff',
     },
     toolbarItem: {
       display: 'flex',
@@ -61,6 +65,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     message: {
       padding: theme.spacing(2),
+    },
+    titleName: {
+      display: 'flex',
+      paddingTop: 10,
+      justifyContent: 'center',
     },
   })
 )
@@ -81,7 +90,11 @@ export default function Nav(props: Props) {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar}>
+        <Typography variant="h6" className={classes.titleName}>
+          memeBook
+        </Typography>
+      </div>
       <Divider />
       <List>
         {['Frinends', 'Group'].map((text, index) => (
@@ -125,11 +138,18 @@ export default function Nav(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            memeBook
-          </Typography>
-          <MailIcon />
-          <AccountCircleIcon />
+          <IconButton aria-label="message">
+            <PostAddIcon />
+          </IconButton>
+          <IconButton aria-label="message">
+            <Badge badgeContent={4} color="error">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+
+          <IconButton aria-label="message">
+            <AccountCircleIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

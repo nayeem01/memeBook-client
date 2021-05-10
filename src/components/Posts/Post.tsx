@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
     },
+    iconButton: {
+      backgroundColor: 'grey',
+    },
   })
 )
 
@@ -86,17 +89,24 @@ export default function Post() {
       </CardContent>
 
       <CardActions disableSpacing className={classes.icons}>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          className={classes.iconButton}
+        >
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="share" className={classes.iconButton}>
+          <ShareIcon className="hoverButton" />
         </IconButton>
         <Box>
           <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
+            className={clsx(
+              classes.expand,
+              {
+                [classes.expandOpen]: expanded,
+              },
+              classes.iconButton
+            )}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
