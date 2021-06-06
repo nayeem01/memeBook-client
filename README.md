@@ -1,1 +1,1 @@
-### memeBook frontend code
+### memeBook client code
